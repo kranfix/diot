@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <link href='https://fonts.googleapis.com/css?family=Roboto:300,400,500,700|Material+Icons' rel="stylesheet">
+  <link href="https://unpkg.com/vuetify/dist/vuetify.min.css" rel="stylesheet">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no, minimal-ui">
+  <meta charset="utf-8" />
+  <script src="https://unpkg.com/mqtt/dist/mqtt.min.js"></script>
+</head>
+<body>
+  <div id="app">
+    <v-app>
+      <v-content>
+        <v-container>Diot APP con Vue.js</v-container>
+      </v-content>
+
+      <v-layout>
+        <v-flex xs12 sm6 offset-sm3>
+          <v-card>
+            <v-card-title>
+              <v-container>
+                <h3> Sala </h3>
+              </v-container>
+
+
+              <v-flex xs7> Luz: </v-flex>
+              <v-flex xs5>
+                <v-switch v-model="sala.luz == 'on'"
+                  @click="updateSalaLuz"
+                ></v-switch>
+              </v-flex>
+
+              <v-flex xs7> Air: </v-flex>
+              <v-flex xs5>
+                <v-slider v-model="sala.air"
+                  value="0"
+                  step="1"
+                  max="3"
+                  @click="updateSalaAir"
+                ></v-slider>
+              </v-flex>
+
+              <v-flex xs7> Temp: </v-flex>
+              <v-flex xs5> {{sala.temp}} °C </v-flex>
+
+              <v-flex xs7> Pres: </v-flex>
+              <v-flex xs5> {{sala.pres}} </v-flex>
+            </v-card-title>
+          </v-card>
+        </v-flex>
+      </v-layout>
+
+      <v-layout>
+        <v-flex xs12 sm6 offset-sm3>
+          <v-card>
+            <v-card-title>
+              <v-container>
+                <h3> Dormitorio </h3>
+              </v-container>
+
+              <v-flex xs7> Luz: </v-flex>
+              <v-flex xs5>
+                <v-slider v-model="dormi.luz"
+                  value="0"
+                  step="5"
+                  max="100"
+                  @click="updateDormiLuz"
+                ></v-slider>
+              </v-flex>
+
+              <v-flex xs7> Air: </v-flex>
+              <v-flex xs5>
+                <v-slider v-model="dormi.air"
+                  value="0"
+                  step="1"
+                  max="3"
+                  @click="updateDormiAir"
+                ></v-slider>
+              </v-flex>
+
+              <v-flex xs7> Temp: </v-flex>
+              <v-flex xs5> {{dormi.temp}} °C</v-flex>
+
+              <v-flex xs7> Pres: </v-flex>
+              <v-flex xs5> {{dormi.pres}} </v-flex>
+            </v-card-title>
+          </v-card>
+        </v-flex>
+      </v-layout>
+
+      <v-footer absolute class="pa-3">
+        <v-spacer></v-spacer>
+        <div>&copy; {{ fechas() }}</div>
+      </v-footer>
+    </v-app>
+  </div>
+
+  <script src="https://unpkg.com/vue/dist/vue.js"></script>
+  <script src="https://unpkg.com/vuetify/dist/vuetify.js"></script>
+  <script src="src/index.js"></script>
+</body>
+</html>
